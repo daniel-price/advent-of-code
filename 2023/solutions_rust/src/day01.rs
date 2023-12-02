@@ -1,19 +1,6 @@
 use std::collections::HashMap;
-use std::fs::{self};
 
-fn day() -> String {
-    let file_name = file!();
-    file_name.replace("src/", "").replace(".rs", "")
-}
-
-fn input(suffix: &str) -> String {
-    let file_path = "../inputs/".to_owned() + &day() + "-" + suffix + ".txt";
-
-    fs::read_to_string(file_path.clone())
-        .unwrap_or_else(|_| panic!("Could not read file {}", file_path))
-        .trim()
-        .to_string()
-}
+use crate::common::input;
 
 fn hashmap() -> HashMap<&'static str, char> {
     HashMap::from([
@@ -116,25 +103,25 @@ mod tests {
 
     #[test]
     fn part1sample() {
-        let answer: i32 = part1(input("example"));
+        let answer: i32 = part1(input("example", file!()));
         assert_eq!(answer, 142);
     }
 
     #[test]
     fn part1input() {
-        let answer: i32 = part1(input("input"));
+        let answer: i32 = part1(input("input", file!()));
         assert_eq!(answer, 55090);
     }
 
     #[test]
     fn part2sample() {
-        let answer = part2(input("example-2"));
+        let answer = part2(input("example-2", file!()));
         assert_eq!(answer, 281);
     }
 
     #[test]
     fn part2input() {
-        let answer = part2(input("input"));
+        let answer = part2(input("input", file!()));
         assert_eq!(answer, 54845);
     }
 }
