@@ -2,3 +2,6 @@
 name = "solutions_rust"
 version = "0.1.0"
 edition = "2021"
+
+[dependencies]
+num-integer = "0.1" # for day 8
